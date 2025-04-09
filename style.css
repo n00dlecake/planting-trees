@@ -7,12 +7,19 @@
     --heading-font: "Bricolage Grotesque", sans-serif;
     --body-font: "Atkinson Hyperlegible Mono", sans-serif;
     /*--- Colors ---*/
-    --dark: #2A2528;
-    --light: #FFF4DB;
-    --primary: #698640;
-    --secondary: #2A3C22;
-    --tertiary: #8F673B;
-    --accent: #CFA959;
+    --raisin-primary: #2A2528;
+    --raisin-secondary: #251e22;
+    --creme-primary: #FFF4DB;
+    --creme-secondary: #FCECC5;
+    --avacado-primary: #698640;
+    --pine-primary: #2A3C22;
+    --brass-primary: #8F673B;
+    --gold-primary: #CFA959;
+    /*--- Dark Mode Colors ---*/
+    --dark-avacado-primary: #778D45;
+    --dark-pine-primary: #49733C;
+    --dark-brass-primary: #CB9B56;
+    --dark-gold-primary: #FFDB8F;
 }
 
 /*----- Basic Style -----*/
@@ -20,36 +27,40 @@
     box-sizing: border-box;
 }
 
+
 body{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: var(--dark);
-    color: var(--light);
+    background-color: var(--creme-primary);
+    color: var(--raisin-primary);
     font-family: var(--body-font);
+    font-weight: 500;
     font-size: 1em;
     overflow-x: hidden;
+    height: 100vh;
 }
 
-#landing-area, #about, #contact{
+#landing-area, #about, #contact, #plant-list{
     max-width: 1200px;
     margin: 11em auto 0;
 }
 
-h1, h1, h3, h4, h5, h6{
+h1, h2, h3, h4, h5, h6{
     font-family: var(--heading-font);
-    font-weight: 800;
+    font-weight: 900;
 }
 
 a{
-    color: var(--primary);
+    color: var(--avacado-primary);
     cursor: pointer;
 }
 
 a:hover{
-    color: var(--accent);
+    color: var(--gold-primary);
 }
+
 
 /*----- Nav Bar -----*/
 .nav-bg{
@@ -58,13 +69,14 @@ a:hover{
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #2A252880;
+    background-color: #FFF4DB80;
     position: sticky;
     top: 0;
     z-index: 2;
 }
 nav{
     width: 80%;
+    max-width: 1200px;
     margin: auto;
     display: flex;
     justify-content: space-between;
@@ -73,7 +85,7 @@ nav{
 }
 
 nav a{
-    color: var(--light);
+    color: var(--raisin-primary);
     text-decoration: none;
 }
 
@@ -84,15 +96,15 @@ nav a{
 }
 
 .nav-title:hover {
-    color: var(--light);
+    color: var(--pine-primary);
 }
 
 .nav-title span{
-    color: var(--primary);
+    color: var(--avacado-primary);
 }
 
 .nav-title:hover span{
-    color: var(--accent);
+    color: var(--gold-primary);
 }
 
 .nav-buttons{
@@ -104,18 +116,36 @@ nav a{
 .nav-buttons a{
     padding: 0.4em 1em;
     margin: auto 0.4em;
-    color: var(--accent);
-    border: 2pt solid var(--secondary);
+    color: var(--gold-primary);
+    border: 2pt solid var(--pine-primary);
     border-radius: 50px;
 }
 
 .nav-buttons a:hover{
     border-color: transparent;
-    background-color: var(--accent);
-    color: var(--dark);
+    background-color: var(--gold-primary);
+    color: var(--raisin-primary);
+}
+
+.nav-spacer{
+    height: 5vh;
+}
+
+/*----- Background -----*/
+.page-bg {
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    background: no-repeat url(assets/images/web-background.png);
+    background-position: center;
+    background-size: cover;
+    z-index: -2;
 }
 
 /*----- Landing Section -----*/
+#landing-area{
+    margin-top: 350vh;
+}
 .hero{
     display: grid;
     grid-template-columns: 3fr 4fr;
@@ -135,10 +165,8 @@ nav a{
     line-height: 90%;
     margin-bottom: 0;
 }
-
-.hero img {
-    max-width: 100%;
-    border: none;
+.hero img{
+    width: 100%;
     border-radius: 20px;
 }
 
@@ -183,18 +211,85 @@ nav a{
     border-radius: 20px;
 }
 
-/*----- About Section -----*/
-.about{
+/*----- Plant List Section -----*/
+#plant-list{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 17em auto;
+}
+#plant-list h2{
+    font-weight: 800;
+    font-size: 4em;
+    line-height: 90%;
+    margin-bottom: 0;
+}
+.card-grid{
     display: grid;
-    grid-template-columns: 3fr 4fr;
+    grid-template-columns: auto auto auto;
+    column-gap: 50px;
+}
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    border-radius: 50px;
+} 
+.card a {
+    text-decoration: none;
+    color: var(--raisin-primary);
+}
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}  
+.card img {
+    width: 100%;
+    border-radius: 50px 50px 0px 0px;
+}
+.card-container {
+    padding: 2px 16px 26px;
+    text-align: center;
+}
+.card-button {
+    background-color: var(--creme-primary); 
+    color: var(--raisin-primary); 
+    border: 2px solid var(--avacado-primary);
+    border-radius: 50px;
+    padding: 16px 32px;
+    text-decoration: none;
+    display: inline-block;
+    font-family: var(--heading-font);
+    font-size: 16px;
+    font-weight: 900;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+}
+.card-button:hover {
+    background-color: var(--pine-primary);
+    color: var(--creme-primary);
+    border: 2px solid var(--pine-primary);
+}
+
+/*----- About Section -----*/
+#about{
+    display: flex;
+    flex-direction: column;
     justify-items: center;
     align-items: center;
     width: 80%;
     margin: auto;
 }
 
+.about{
+    display: grid;
+    grid-template-columns: 3fr 4fr;
+    justify-items: center;
+    align-items: center;
+}
+
 .about img{
-    border-radius: 50px;
+    border-radius: 5%;
     max-height: 40vh;
     margin-right: 0.6em;
 }
@@ -204,11 +299,17 @@ nav a{
 }
 
 .about-text h2{
-    font-family: var(--heading-font);
     font-weight: 800;
     font-size: 6em;
     line-height: 90%;
     margin-bottom: 0;
+}
+
+/*--- Vimeo ----*/
+.vimeo{
+    max-width: 100%;
+    width: 80vw;
+    height: 45vw;
 }
 
 /*----- Contact ------*/
@@ -220,15 +321,27 @@ nav a{
 }
 
 .contact-container h2{
-    font-family: var(--heading-font);
     font-weight: 800;
     font-size: 6em;
     line-height: 90%;
     margin-bottom: 0.4em;
 }
+.contact-forms{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 3em;
+    justify-content: center;
+    align-items: center;
+}
+.contact-form-contents{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 
-input[type=text], input[type=submit] {
-    width: 50%;
+input[type=text], input[type=submit], form a  {
+    width: 100%;
     padding: 12px;
     margin: 1em auto;
     display: inline-block;
@@ -237,31 +350,35 @@ input[type=text], input[type=submit] {
     text-align: center;
     font-family: var(--body-font);
     font-size: 1.2em;
-    background-color: var(--light);
-    color: var(--dark);
+    background-color: var(--creme-secondary);
+    color: var(--raisin-primary);
 }
 
-input[type=submit] {
-    width: 25%;
-    color: var(--accent);
+input[type=submit], form a {
+    width: 100%;
+    color: var(--avacado-primary);
     background-color: transparent;
-    border: 2pt solid var(--secondary);
+    border: 2pt solid var(--pine-primary);
     border-radius: 50px;
     font-family: var(--heading-font);
     font-weight: 800;
     font-size: 1.8em;
+    text-align: center;
+    padding: 1em;
+    text-decoration: none;
 }
 
-input[type=submit]:hover {
+input[type=submit]:hover, form a:hover {
     border-color: transparent;
-    background-color: var(--accent);
-    color: var(--dark);
+    background-color: var(--gold-primary);
+    color: var(--raisin-primary);
 } 
 
 input[type=text]:focus, input[type=submit]:focus{
     border: none;
     outline: 0;
 } 
+
 
 /*----- Footer -----*/
 footer{

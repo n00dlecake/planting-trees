@@ -139,12 +139,12 @@ nav a{
     background: no-repeat url(assets/images/web-background.png);
     background-position: center;
     background-size: cover;
-    z-index: -2;
+    z-index: -5;
 }
 
 /*----- Landing Section -----*/
 #landing-area{
-    margin-top: 350vh;
+    margin-top: 400vh;
 }
 .hero{
     display: grid;
